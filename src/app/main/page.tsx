@@ -14,7 +14,6 @@ import UpdateButton from "../../components/UpdateButton";
 import { useRouter } from "next/navigation";
 import UserList from "../../components/UserList";
 import { handleLogout } from "@/utils/authenticationUtil";
-import { useEffect } from "react";
 
 export default function Home() {
   const [user] = useAuthState(auth);
@@ -25,7 +24,7 @@ export default function Home() {
     signOut(auth);
     handleLogout();
   };
-  
+
   return (
     <Container maxWidth="md">
       <Box

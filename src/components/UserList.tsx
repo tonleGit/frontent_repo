@@ -11,9 +11,9 @@ import {
   Typography,
   CircularProgress,
 } from "@mui/material";
-import { fetchUsers } from "@/apis/userApi";
-import { useAppDispatch, useAppSelector } from "@/store/hook";
-import { StateStatusEnum } from "@/enums/api-status.enum";
+import { fetchUsers } from "../apis/userApi";
+import { useAppDispatch, useAppSelector } from "../store/hook";
+import { StateStatusEnum } from "../enums/api-status.enum";
 
 const UserList = () => {
   const dispatch = useAppDispatch();

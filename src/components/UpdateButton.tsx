@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { updateUserData } from "../apis/userApi";
 import { Button, CircularProgress, Typography } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "@/store/hook";
-import { StateStatusEnum } from "@/enums/api-status.enum";
+import { useAppDispatch, useAppSelector } from "../store/hook";
+import { StateStatusEnum } from "../enums/api-status.enum";
 
 const UpdateButton = () => {
   const dispatch = useAppDispatch();
   const { updateUser } = useAppSelector((state) => state.user);
   const [notiMessage, setNotiMessage] = useState("");
-
-  console.log("user", updateUser);
 
   const handleUpdate = async () => {
     dispatch(

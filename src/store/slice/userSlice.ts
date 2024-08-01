@@ -1,21 +1,16 @@
 import { fetchUsers, updateUserData } from "@/apis/userApi";
 import { StateStatusEnum } from "@/enums/api-status.enum";
 import { createSlice } from "@reduxjs/toolkit";
+import { State, StateInterface } from "../types";
+
+const initialState: Record<string, StateInterface> = {
+  updateUser: new State(),
+  users: new State({ value: [] }),
+};
 
 const userSlice = createSlice({
   name: "user",
-  initialState: {
-    updateUser: {
-      status: StateStatusEnum.idle,
-      error: null,
-      value: null,
-    },
-    users: {
-      status: StateStatusEnum.idle,
-      value: [],
-      error: null,
-    },
-  },
+  initialState: initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchUsers.pending, (state) => {
