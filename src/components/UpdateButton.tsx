@@ -8,6 +8,7 @@ const UpdateButton = () => {
   const dispatch = useAppDispatch();
   const { updateUser } = useAppSelector((state) => state.user);
   const [notiMessage, setNotiMessage] = useState("");
+  const [notiColor, setNotiColor] = useState("success.main");
 
   const handleUpdate = async () => {
     dispatch(
@@ -23,6 +24,7 @@ const UpdateButton = () => {
     if (updateUser.status == StateStatusEnum.failed) {
       // @ts-ignore
       setNotiMessage(updateUser.error?.message || "Update user data failed");
+      setNotiColor("secondary.main");
     } else if (updateUser.status === StateStatusEnum.success) {
       setNotiMessage("Update user data successfully");
     }
@@ -41,7 +43,14 @@ const UpdateButton = () => {
       >
         Update Data
       </Button>
-      <Typography variant="body1">{notiMessage}</Typography>
+      <Typography
+        variant="body1"
+        sx={{
+          color: notiColor,
+        }}
+      >
+        {notiMessage}
+      </Typography>
     </>
   );
 };
