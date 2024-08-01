@@ -21,8 +21,8 @@ import { StateStatusEnum } from "../enums/api-status.enum";
 
 const LoginForm = () => {
   const dispatch = useAppDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("charles@gmail.com");
+  const [password, setPassword] = useState("charles123");
 
   const { loginResult } = useAppSelector((state) => state.authentication);
 
