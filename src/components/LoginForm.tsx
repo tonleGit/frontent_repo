@@ -8,16 +8,17 @@ import { TextField, Button, Box, Container, Typography } from "@mui/material";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState<any>(null);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
       // @ts-ignore
-      localStorage.setItem('accessToken', result.user.accessToken);
+      localStorage.setItem("accessToken", result.user.accessToken);
       console.log("result,", result);
     } catch (error) {
-      console.error("Error signing in with password and email", error);
+      setLoginError(error)
     }
   };
 
@@ -53,6 +54,7 @@ const LoginForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <Typography sx={{ color: 'secondary.main', textAlign: 'center'}} variant="body2" >{loginError?.message}</Typography>
           <Button
             type="submit"
             variant="contained"
